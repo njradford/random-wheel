@@ -1,0 +1,25 @@
+{
+  "name": "wheel-of-destiny",
+  "version": "1.0.0",
+  "description": "App for name selection through a suspenseful  wheel spin. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AldousP/wheel-of-destiny.git"
+  },
+  "keywords": [
+    "luck",
+    "animated",
+    "random",
+    "archaic"
+  ],
+  "author": "Aldous Pryce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AldousP/wheel-of-destiny/issues"
+  },
+  "homepage": "https://github.com/AldousP/wheel-of-destiny#readme"
+}
