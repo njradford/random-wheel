@@ -1,0 +1,73 @@
+/* Button Look And Feels */
+.stock {
+    border-style: none;
+    color: white;
+    width: 128px;
+    height: 32px;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    font-weight: bold;
+    outline: none;
+    text-transform: uppercase;
+    border-radius: 3px;
+    transition: box-shadow .025s;
+}
+
+.stock:active {
+    box-shadow: 0 0 0;
+    transition: box-shadow .025s;
+}
+
+.stock.login {
+    background-color: #00cc66;
+}
+
+.stock.logout {
+    background-color: #cc3d00;
+}
+
+.bespoke {
+    background-color: white;
+    color: darkgrey;
+    width: 12em;
+    height: 32px;
+    font-size: 12px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12);
+    text-align: center;
+    border: thin solid darkgrey;
+    outline: none;
+    text-transform: uppercase;
+    font-style: italic;
+    font-family: 'Times New Roman', serif;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+    transition: box-shadow .025s;
+}
+
+.bespoke:active {
+    box-shadow: 0 0 0;
+    transition: box-shadow .025s;
+}
+
+.bespoke.login {
+    background-color: #3B3D3D;
+    color: white;
+}
+
+.bespoke.logout {
+}
+
+.button {
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 16px auto;
+    display: block;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}

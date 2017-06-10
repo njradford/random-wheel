@@ -2,11 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" >
     <title>Wheel Of Destiny</title>
     <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="element_styles.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
   </head>
   <body>
     <canvas id="canvas" width="600" height="600"></canvas>
+    <div class="controls">
+      <h3>Enter Items</h3>
+      <div class="input-row">
+        <input class="wedge-input" placeholder="Type a wedge value."/>
+        <button type="button" id="add-wedge" class="stock button">+</button>
+      </div>
+      <div id="wedge-list">
+        <div class="list-item">
+          <p>John Doe</p>
+          <button type="button" class="remove-wedge stock button">&times;</button>
+        </div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="list-item" style="display: none;">
+      <button type="button" class="remove-wedge stock button">&times;</button>
+    </div>
   </body>
-  <script src="index.js"></script>
+  <script src="canvas.js"></script>
 </html>
