@@ -3,66 +3,84 @@ body {
     justify-content: center;
     align-items: flex-start;
     margin-top: 32px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: sans-serif;
 }
 
-#canvas {
-    padding-left: 0;
-    padding-right: 0;
-
-    display: block;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+main {
+    display: flex;
 }
 
 .controls {
     padding-left: 32px;
     padding-right: 32px;
-    height: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 }
 
 .input-row {
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    height: 36px;
+    margin-bottom: 4px;
 }
 
-.input-row input {
-    border-radius: 6px 0 0 6px;
-    border: thin solid slategray;
-    height: 30px;
-    flex-grow: 1;
-    padding: 0 0 0 8px;
+.input-row :first-child {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+    margin: 0;
+    border-radius: 8px 0 0 8px;
+    border: thin solid rgba(75, 79, 80, 0.5);
     border-right: none;
+    flex-grow: 2;
+}
+
+.input-row input:focus {
+    outline: none;
 }
 
 .input-row button {
-    background-color: #00cc66;
     margin: 0;
+    height: 100%;
+    color: white;
+    border-style: none;
     width: 32px;
-    border-radius: 0 6px 6px 0;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    border-radius: 0 8px 8px 0;
 }
 
-.list-item {
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
+.input-row button:focus{
+    outline: none;
+    border: none;
 }
 
-.list-item p {
-    border-radius: 6px 0 0 6px;
-    flex-grow: 1;
-    padding-left: 10px;
-    vertical-align: baseline;
-    line-height: 28px;
-    border: 2px solid #cc2a00;
-    border-right-style: none;
-    color: #cc2a00;
+.add-wedge {
+    background-color: #26cb40;
 }
 
-.list-item button {
-    background-color: #cc2a00;
-    margin: 0;
-    width: 32px;
-    border-radius: 0 6px 6px 0;
+.remove-wedge {
+    background-color: #cb4d2f;
 }
+
+#canvas {
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#buttons button {
+    margin: 4px;
+    width: 100%;
+}
+
+#spin-wheel {
+
+    background-color: #26cb40;
+}
+
+
+
 

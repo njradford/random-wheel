@@ -9,24 +9,33 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
   </head>
   <body>
-    <canvas id="canvas" width="600" height="600"></canvas>
-    <div class="controls">
-      <h3>Enter Items</h3>
-      <div class="input-row">
-        <input class="wedge-input" placeholder="Type a wedge value."/>
-        <button type="button" id="add-wedge" class="stock button">+</button>
-      </div>
-      <div id="wedge-list">
-        <div class="list-item">
-          <p>John Doe</p>
-          <button type="button" class="remove-wedge stock button">&times;</button>
+    <main>
+      <canvas id="canvas" width="600" height="600"></canvas>
+      <div class="controls">
+        <div>
+          <h3>Enter Items</h3>
+          <div class="input-row">
+            <input id="wedge-input" placeholder="Type a wedge value."/>
+            <button type="button" id="add-wedge" class="add-wedge">+</button>
+          </div>
+          <div id="wedge-list">
+          </div>
+        </div>
+        <div id="buttons">
+          <button id="spin-wheel" class="button stock">Spin</button>
+          <button id="clear-list" class="button stock remove-wedge">Clear</button>
         </div>
       </div>
-      <hr />
-    </div>
-
-    <div class="list-item" style="display: none;">
-      <button type="button" class="remove-wedge stock button">&times;</button>
+    </main>
+    <!--Templates-->
+    <div id="templates" style="display: none">
+      <!--List Item Template-->
+      <ListItem>
+        <div class="list-item input-row">
+          <div class="content">John Doe</div>
+          <button type="button" class="remove-wedge">&times;</button>
+        </div>
+      </ListItem>
     </div>
   </body>
   <script src="canvas.js"></script>
