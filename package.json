@@ -1,14 +1,14 @@
 {
-  "name": "wheel-of-destiny",
+  "name": "a-random-wheel",
   "version": "1.0.0",
-  "description": "App for name selection through a suspenseful  wheel spin. ",
+  "description": "A wheel for picking things.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AldousP/wheel-of-destiny.git"
+    "url": "git+https://github.com/AldousP/a-random-wheel.git"
   },
   "keywords": [
     "luck",
@@ -19,7 +19,7 @@
   "author": "Aldous Pryce",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AldousP/wheel-of-destiny/issues"
+    "url": "https://github.com/AldousP/a-random-wheel/issues"
   },
-  "homepage": "https://github.com/AldousP/wheel-of-destiny#readme"
+  "homepage": "https://github.com/AldousP/a-random-wheel#readme"
 }
