@@ -100,9 +100,11 @@ function renderList() {
       var content = instance.getElementsByClassName('content')[0];
       var button = instance.getElementsByTagName('button')[0];
       if (content && button) {
-        content.innerText = elem;
+        content.innerHTML = '';
+        var contentDiv = document.createElement('span');
+        contentDiv.innerText = elem;
+        content.appendChild(contentDiv);
         button.setAttribute('data-ID', i + '');
-        var button = instance.getElementsByTagName('button')[0];
         button.onclick = function (e) {
           removeItem(e.target.getAttribute('data-id'));
         };
@@ -141,7 +143,7 @@ function loop() {
   var y;
   var wedgeRotation;
   var list_len = name_list.length;
-  for (var i = 0; i <= list_len; i++) {
+  for (var i = 0; i < list_len; i++) {
     context.beginPath();
     wedgeRotation = i * wedgeSubdiv + wheelRotation;
     x = CANVAS_MID_X + Math.cos(degRad(wedgeRotation)) * WHEEL_RADIUS;
@@ -149,16 +151,20 @@ function loop() {
     context.moveTo(CANVAS_MID_X, CANVAS_MID_Y);
 
     var value = i % 3;
-    switch (value) {
-      case 0:
-        fillColor(wedgeColorA);
-        break;
-      case 1:
-        fillColor(wedgeColorB);
-        break;
-      case 2:
-        fillColor(wedgeColorC);
-        break;
+    if (list_len % 2) {
+      switch (value) {
+        case 0:
+          fillColor(wedgeColorA);
+          break;
+        case 1:
+          fillColor(wedgeColorB);
+          break;
+        case 2:
+          fillColor(wedgeColorC);
+          break;
+      }
+    } else {
+      fillColor( i % 2 ? wedgeColorA : wedgeColorB);
     }
     context.arc(CANVAS_MID_X, CANVAS_MID_Y, WHEEL_RADIUS, degRad(wedgeRotation), degRad(wedgeRotation + wedgeSubdiv));
     context.fill();
@@ -173,6 +179,12 @@ function loop() {
     context.fillText(name_list[i], CANVAS_MID_X + Math.cos(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75), CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75));
   }
 
+  fillColor("#000000");
+  context.beginPath();
+  context.moveTo(CANVAS_WIDTH / 2 + 45, 25);
+  context.lineTo(CANVAS_WIDTH / 2 - 45, 25);
+  context.lineTo(CANVAS_WIDTH / 2, 65);
+  context.fill();
   rotationSpeed += ROTATION_RESISTANCE * delta;
   if (rotationSpeed < 0) {
     rotationSpeed = 0;

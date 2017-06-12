@@ -6,62 +6,79 @@ body {
     font-family: sans-serif;
 }
 
-main {
-    display: flex;
-}
-
 .controls {
     padding-left: 32px;
     padding-right: 32px;
     justify-content: space-between;
     display: flex;
     flex-direction: column;
+    float: right;
+    width: 164px;
 }
 
-.input-row {
+.input-row{
     display: flex;
-    align-items: center;
-    height: 36px;
-    margin-bottom: 4px;
+    justify-content: space-between;
+    flex-grow: 1;
+    border: solid black;
+    border-right-style: none;
+    padding-left: 4px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    height: 23px;
+    overflow-x: scroll;
+    margin-top: 2px;
 }
 
-.input-row :first-child {
-    height: 32px;
-    line-height: 32px;
-    padding-left: 10px;
-    margin: 0;
-    border-radius: 8px 0 0 8px;
-    border: thin solid rgba(75, 79, 80, 0.5);
-    border-right: none;
-    flex-grow: 2;
-}
-
-.input-row input:focus {
+.input-row input {
     outline: none;
+    border: none;
+    padding-left: 4px;
 }
 
 .input-row button {
-    margin: 0;
-    height: 100%;
+    border: solid black;
+    background: black;
     color: white;
-    border-style: none;
-    width: 32px;
-    font-size: 1.3em;
-    line-height: 1.3em;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 4px 4px 0;
 }
 
 .input-row button:focus{
     outline: none;
-    border: none;
 }
 
 .add-wedge {
-    background-color: #26cb40;
+    background-color: #868686;
+}
+
+.name-entry {
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    margin: 16px 0;
+}
+
+.name-entry button {
+    border-radius: 0;
+}
+
+.content {
+    width: 135px;
+    overflow-x: scroll;
+    white-space: nowrap;
 }
 
 .remove-wedge {
-    background-color: #cb4d2f;
+    background-color: #8e8e8e;
+}
+
+.control-header {
+    border: 4px solid black;
+    border-radius: 7px;
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
 }
 
 #canvas {
@@ -69,16 +86,40 @@ main {
     padding-right: 0;
     display: block;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    float: left;
+    border: 3px solid black;
 }
 
 #buttons button {
-    margin: 4px;
-    width: 100%;
+    width: 50%;
+    border-radius: 0;
+    border: thin solid black;
+    background-color: black;
+    transition: all 300ms;
+
+}
+
+#buttons button:hover {
+    transition: all 300ms;
+    border-color: white;
+}
+
+#wedge-list {
+    height: 350px;
+    overflow-y: scroll;
+    border: 4px solid black;
+    border-radius: 8px 8px 0 0;
+    padding: 2px;
 }
 
 #spin-wheel {
+    background-color: #000000;
+}
 
-    background-color: #26cb40;
+#buttons {
+    display: flex;
+    padding: 0;
+    margin: 0;
 }
 
 
