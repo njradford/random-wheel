@@ -9,4 +9,4 @@ It's a simple wheel that picks random entries.
 Because it can be difficult to find a wheel that picks random entries, that is also simple. 
 
 ### Where Can I See It?
-[Here.](randomwheel.com)
+[Here.](http://randomwheel.com)
