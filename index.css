@@ -66,6 +66,8 @@ body {
     width: 135px;
     overflow-x: scroll;
     white-space: nowrap;
+    align-items: center;
+    display: flex;
 }
 
 .remove-wedge {
