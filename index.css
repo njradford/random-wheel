@@ -1,94 +1,41 @@
 body {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
     margin-top: 32px;
+    justify-content: space-between;
     font-family: sans-serif;
-}
-
-.controls {
-    padding-left: 32px;
-    padding-right: 32px;
-    justify-content: space-between;
-    display: flex;
     flex-direction: column;
-    float: right;
-    width: 164px;
+    align-items: center;
+
 }
 
-.input-row{
+main {
     display: flex;
-    justify-content: space-between;
-    flex-grow: 1;
-    border: solid black;
-    border-right-style: none;
-    padding-left: 4px;
-    border-radius: 5px;
-    margin-bottom: 2px;
-    height: 23px;
-    overflow-x: scroll;
-    margin-top: 2px;
-}
-
-.input-row input {
-    outline: none;
-    border: none;
-    padding-left: 4px;
-}
-
-.input-row button {
-    border: solid black;
-    background: black;
-    color: white;
-    border-radius: 0 4px 4px 0;
-}
-
-.input-row button:focus{
-    outline: none;
-}
-
-.add-wedge {
-    background-color: #868686;
-}
-
-.name-entry {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
-    border-radius: 0;
-    padding: 0;
-    margin: 16px 0;
 }
 
 .name-entry button {
     border-radius: 0;
 }
 
-.content {
-    width: 135px;
-    overflow-x: scroll;
-    white-space: nowrap;
-    align-items: center;
-    display: flex;
-}
-
 .remove-wedge {
     background-color: #8e8e8e;
 }
 
-.control-header {
+.right-pane {
     border: 4px solid black;
-    border-radius: 7px;
-    display: flex;
-    margin: 0;
-    flex-direction: column;
-    align-items: center;
+    border-radius: 8px 8px 0 0;
+    padding: 8px;
+    margin: 8px;
 }
 
 #canvas {
     padding-left: 0;
     padding-right: 0;
     display: block;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    float: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     border: 3px solid black;
     border-radius: 300px;
 }
@@ -107,14 +54,6 @@ body {
     border-color: white;
 }
 
-#wedge-list {
-    height: 350px;
-    overflow-y: scroll;
-    border: 4px solid black;
-    border-radius: 8px 8px 0 0;
-    padding: 2px;
-}
-
 #spin-wheel {
     background-color: #000000;
 }
@@ -123,6 +62,69 @@ body {
     display: flex;
     padding: 0;
     margin: 0;
+}
+
+/*Label With Action*/
+.labeled-action {
+    margin: 8px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.12);
+    text-overflow: ellipsis;
+}
+
+.labeled-action div {
+    padding: 8px;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.labeled-action button {
+    height: 32px;
+    width: 32px;
+    background-color: #000000;
+    color: white;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border-style: none;
+    flex-shrink: 0;
+}
+
+.labeled-action input {
+    padding-left: 4px;
+    font-size: 14px;
+    border-style: none;
+    flex-grow: .7;
+}
+
+input:focus {
+    outline: none;
+}
+
+.labeled-action button:active {
+    outline: none;
+    box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.labeled-action button:focus {
+    outline: none;
+}
+
+.footer {
+    margin: 32px;
+    opacity: .5;
+    text-decoration: none;
+}
+
+.footer a {
+    text-decoration: none;
 }
 
 

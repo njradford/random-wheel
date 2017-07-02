@@ -27,7 +27,15 @@ var templates = document.getElementById("templates");
 var spin_wheel = document.getElementById("spin-wheel");
 var clear_list = document.getElementById("clear-list");
 
+var wedgeFontSize = 22;
+
 var name_list = [];
+
+var name_lists = [
+  ['E.Honda', 'Chun Li', 'M.Bison', 'Ryu'],
+  ['Ringo', 'George', 'John', 'Paul'],
+  ['Liu Kang', 'Sub-Zero', 'Sonya', 'Baraka']
+];
 
 function setup() {
   CANVAS_WIDTH = canvas.width;
@@ -43,7 +51,9 @@ function setup() {
   }
 
   if (!name_list || !name_list.length) {
-    name_list = ['E.Honda', 'Chun Li', 'M.Bison', 'Ryu']
+    var index = getRandomInt(0, name_lists.length);
+    console.log(index);
+    name_list = name_lists[index];
   }
 
   registerInputListeners();
@@ -69,7 +79,8 @@ function removeItem(index) {
 }
 
 function spinWheel() {
-  rotationSpeed = MAX_ROTATION_SPEED;
+  rotationSpeed += MAX_ROTATION_SPEED / 2;
+  rotationSpeed = rotationSpeed > MAX_ROTATION_SPEED ? MAX_ROTATION_SPEED : rotationSpeed;
 }
 
 function clearList() {
@@ -174,7 +185,7 @@ function loop() {
     context.beginPath();
     wedgeRotation = (i * wedgeSubdiv + wheelRotation) + wedgeSubdiv / 2;
     context.textAlign = "center";
-    context.font = "26px Josefin Sans";
+    context.font = wedgeFontSize + "px Josefin Sans";
     fillColor("#FFFFFF");
     context.fillText(name_list[i], CANVAS_MID_X + Math.cos(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75), CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75));
   }
@@ -185,11 +196,25 @@ function loop() {
   context.lineTo(CANVAS_WIDTH / 2 - 45, 25);
   context.lineTo(CANVAS_WIDTH / 2, 65);
   context.fill();
+
+  context.beginPath();
+  context.arc(CANVAS_MID_X, CANVAS_MID_Y, WHEEL_RADIUS / 32, 0, 2 * Math.PI);
+  context.fill();
+
   rotationSpeed += ROTATION_RESISTANCE * delta;
   if (rotationSpeed < 0) {
     rotationSpeed = 0;
   }
+
+
   requestAnimationFrame(loop);
 }
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
 setup();
+

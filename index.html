@@ -7,15 +7,20 @@
     <link rel="stylesheet" href="index.css"/>
     <link rel="stylesheet" href="element_styles.css"/>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
     <main>
       <canvas id="canvas" width="500" height="500"></canvas>
-      <div class="controls">
-        <h3>Enter Items</h3>
-        <div class="input-row name-entry">
-          <input id="wedge-input" placeholder="Type a wedge value."/>
-          <button type="button" id="add-wedge" class="add-wedge">+</button>
+      <div class="right-pane">
+        <div class="controls">
+          <h2 style="text-align: center">Enter Wedge Value</h2>
+          <div class="labeled-action name-entry">
+            <input id="wedge-input" class="content" placeholder="Type a wedge value."/>
+            <button id="add-wedge">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
         <div id="wedge-list">
         </div>
@@ -25,13 +30,16 @@
         </div>
       </div>
     </main>
+    <div class="footer">Made with <i class="fa fa-heart" aria-hidden="true"></i> <a href="https://github.com/aldousp" target="_blank">by Aldous</a>.</div>
     <!--Templates-->
     <div id="templates" style="display: none">
       <!--List Item Template-->
       <ListItem>
-        <div class="list-item input-row">
-          <div class="content">John Doe</div>
-          <button type="button" class="remove-wedge">&times;</button>
+        <div class="list-item labeled-action">
+          <div class="content">Sample Content</div>
+          <button class="remove-wedge">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
         </div>
       </ListItem>
     </div>
