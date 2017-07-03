@@ -1,6 +1,6 @@
 var CANVAS_MID_X;
 var CANVAS_MID_Y;
-var WHEEL_PERCENTAGE = .95;
+var WHEEL_PERCENTAGE = .975;
 var WHEEL_RADIUS;
 var ROTATION_RESISTANCE =  -45;
 var ENTER_KEY = 13;
@@ -218,9 +218,9 @@ function loop() {
 
   fillColor("#000000");
   context.beginPath();
-  context.moveTo(CANVAS_MID_X + canvas.width / 32, canvas.height / 16);
-  context.lineTo(CANVAS_MID_X - canvas.width / 32, canvas.height / 16);
-  context.lineTo(CANVAS_MID_X, canvas.height / 10);
+  context.moveTo(CANVAS_MID_X + canvas.width / 32, canvas.height / 64);
+  context.lineTo(CANVAS_MID_X - canvas.width / 32, canvas.height / 64);
+  context.lineTo(CANVAS_MID_X, canvas.height / 18);
   context.fill();
 
   if (!name_list.length) {
