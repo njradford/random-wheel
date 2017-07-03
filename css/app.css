@@ -5,8 +5,8 @@ body {
     font-family: sans-serif;
     flex-direction: column;
     align-items: center;
-
 }
+
 
 main {
     display: flex;
@@ -14,6 +14,19 @@ main {
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
+}
+
+
+@media (max-width: 425px) {
+    main {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    canvas {
+        width: 256px;
+        height: 256px;
+    }
 }
 
 .name-entry button {
@@ -126,4 +139,5 @@ input:focus {
 .footer a {
     text-decoration: none;
 }
+
 

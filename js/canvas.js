@@ -1,8 +1,6 @@
-var CANVAS_WIDTH;
-var CANVAS_HEIGHT;
 var CANVAS_MID_X;
 var CANVAS_MID_Y;
-var WHEEL_PERCENTAGE = .85;
+var WHEEL_PERCENTAGE = .95;
 var WHEEL_RADIUS;
 var ROTATION_RESISTANCE =  -45;
 var ENTER_KEY = 13;
@@ -27,21 +25,24 @@ var templates = document.getElementById("templates");
 var spin_wheel = document.getElementById("spin-wheel");
 var clear_list = document.getElementById("clear-list");
 
-var wedgeFontSize = 22;
+var mobile_break = 425;
+var desktop_canvas_size = 500;
+var mobile_canvas_size = 500;
 
 var name_list = [];
-
 var name_lists = [
   ['E.Honda', 'Chun Li', 'M.Bison', 'Ryu'],
   ['Ringo', 'George', 'John', 'Paul'],
   ['Liu Kang', 'Sub-Zero', 'Sonya', 'Baraka']
 ];
 
+var blank_message = "Add some values in the pane on the right.";
+var is_mobile = false;
+var last_width = 0;
+
 function setup() {
-  CANVAS_WIDTH = canvas.width;
-  CANVAS_HEIGHT = canvas.height;
-  CANVAS_MID_X = CANVAS_WIDTH / 2;
-  CANVAS_MID_Y = CANVAS_HEIGHT / 2;
+  CANVAS_MID_X = canvas.width / 2;
+  CANVAS_MID_Y = canvas.height / 2;
   WHEEL_RADIUS = CANVAS_MID_X * WHEEL_PERCENTAGE;
   lastTime = Date.now();
   // name_list
@@ -51,11 +52,11 @@ function setup() {
   }
 
   if (!name_list || !name_list.length) {
-    var index = getRandomInt(0, name_lists.length);
-    console.log(index);
-    name_list = name_lists[index];
+    name_list = name_lists[getRandomInt(0, name_lists.length)];
   }
 
+  checkIfMobile();
+  resizeCanvas();
   registerInputListeners();
   renderList();
   loop();
@@ -86,6 +87,30 @@ function spinWheel() {
 function clearList() {
   name_list = [];
   refreshList();
+}
+
+function resizeCanvas() {
+  console.log(is_mobile);
+  canvas.width = is_mobile ? mobile_canvas_size : desktop_canvas_size;
+  canvas.height = is_mobile ? mobile_canvas_size : desktop_canvas_size;
+  canvas.style.width = is_mobile ? mobile_canvas_size : desktop_canvas_size;
+  canvas.style.height = is_mobile ? mobile_canvas_size : desktop_canvas_size;
+  CANVAS_MID_X = canvas.width / 2;
+  CANVAS_MID_Y = canvas.height / 2;
+  WHEEL_RADIUS = CANVAS_MID_X * WHEEL_PERCENTAGE;
+}
+
+function checkIfMobile() {
+  is_mobile = window.innerWidth < mobile_break;
+  if (last_width > mobile_break && is_mobile) {
+    resizeCanvas();
+  }
+
+  if (last_width < mobile_break && !is_mobile) {
+    resizeCanvas();
+  }
+
+  last_width = window.innerWidth;
 }
 
 function registerInputListeners() {
@@ -140,7 +165,8 @@ function degRad(deg) {
 }
 
 function loop() {
-  context.clearRect(0 ,0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  checkIfMobile();
+  context.clearRect(0 ,0, canvas.width, canvas.height);
   var now = Date.now();
   delta = (now - lastTime) / 1000;
   if (delta > 0) {
@@ -185,27 +211,35 @@ function loop() {
     context.beginPath();
     wedgeRotation = (i * wedgeSubdiv + wheelRotation) + wedgeSubdiv / 2;
     context.textAlign = "center";
-    context.font = wedgeFontSize + "px Josefin Sans";
+    context.font = canvas.width / 20 + "px Josefin Sans";
     fillColor("#FFFFFF");
     context.fillText(name_list[i], CANVAS_MID_X + Math.cos(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75), CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75));
   }
 
   fillColor("#000000");
   context.beginPath();
-  context.moveTo(CANVAS_WIDTH / 2 + 45, 25);
-  context.lineTo(CANVAS_WIDTH / 2 - 45, 25);
-  context.lineTo(CANVAS_WIDTH / 2, 65);
+  context.moveTo(CANVAS_MID_X + canvas.width / 32, canvas.height / 16);
+  context.lineTo(CANVAS_MID_X - canvas.width / 32, canvas.height / 16);
+  context.lineTo(CANVAS_MID_X, canvas.height / 10);
   context.fill();
 
-  context.beginPath();
-  context.arc(CANVAS_MID_X, CANVAS_MID_Y, WHEEL_RADIUS / 32, 0, 2 * Math.PI);
-  context.fill();
+  if (!name_list.length) {
+    context.beginPath();
+    context.textAlign = "center";
+    context.font = wedgeFontSize + "px Josefin Sans";
+    fillColor("#000000");
+    context.fillText(blank_message, CANVAS_MID_X, CANVAS_MID_Y);
+  } else {
+    context.beginPath();
+    context.arc(CANVAS_MID_X, CANVAS_MID_Y, WHEEL_RADIUS / 32, 0, 2 * Math.PI);
+    context.fill();
+  }
 
   rotationSpeed += ROTATION_RESISTANCE * delta;
+
   if (rotationSpeed < 0) {
     rotationSpeed = 0;
   }
-
 
   requestAnimationFrame(loop);
 }
