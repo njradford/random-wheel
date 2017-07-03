@@ -211,7 +211,7 @@ function loop() {
     context.beginPath();
     wedgeRotation = (i * wedgeSubdiv + wheelRotation) + wedgeSubdiv / 2;
     context.textAlign = "center";
-    context.font = canvas.width / 20 + "px Josefin Sans";
+    context.font = canvas.width / 28 + "px Josefin Sans";
     fillColor("#FFFFFF");
     context.fillText(name_list[i], CANVAS_MID_X + Math.cos(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75), CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75));
   }
@@ -226,7 +226,7 @@ function loop() {
   if (!name_list.length) {
     context.beginPath();
     context.textAlign = "center";
-    context.font = wedgeFontSize + "px Josefin Sans";
+    context.font = canvas.width / 28  + "px Josefin Sans";
     fillColor("#000000");
     context.fillText(blank_message, CANVAS_MID_X, CANVAS_MID_Y);
   } else {
