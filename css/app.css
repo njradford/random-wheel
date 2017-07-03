@@ -16,20 +16,6 @@ main {
     width: 100%;
 }
 
-
-@media (max-width: 425px) {
-    main {
-        flex-direction: column-reverse;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    canvas {
-        width: 256px;
-        height: 256px;
-    }
-}
-
 .name-entry button {
     border-radius: 0;
 }
@@ -52,8 +38,9 @@ main {
     flex-grow: 0;
     overflow-y: scroll;
     height: 350px;
-    border: thin solid;
     border-radius: 4px 4px 0 0;
+    border: thin solid #eaeaea;
+    box-shadow: inset 0 0 2px 1px #828282;
 }
 
 #canvas {
@@ -152,4 +139,19 @@ input:focus {
     text-decoration: none;
 }
 
+@media (max-width: 425px) {
+    main {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: flex-start;
+    }
 
+    canvas {
+        width: 256px;
+        height: 256px;
+    }
+
+    #wedge-list {
+        height: 128px;
+    }
+}
