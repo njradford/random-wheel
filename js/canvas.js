@@ -97,7 +97,7 @@ function removeItem(index) {
 }
 
 function spinWheel() {
-  rotationSpeed += MAX_ROTATION_SPEED / 2;
+  rotationSpeed += (MAX_ROTATION_SPEED / 2) * (Math.random() * (1.75 - .75) + .75);
   rotationSpeed = rotationSpeed > MAX_ROTATION_SPEED ? MAX_ROTATION_SPEED : rotationSpeed;
 }
 
