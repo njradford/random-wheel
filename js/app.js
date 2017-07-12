@@ -36,14 +36,20 @@ var wedge_text_position = .65; // Distance Along Radius
 
 var nameList = [];
 var name_lists = [
-  ['E.Honda', 'Chun Li', 'M.Bison', 'Ryu'],
+  ['E.Honda', 'Chun Li', 'M.Bison', 'Cammy'],
   ['Ringo', 'George', 'John', 'Paul'],
-  ['Liu Kang', 'Sub-Zero', 'Sonya', 'Baraka']
+  ['Roy', 'Gee', 'Biv'],
+  ['Tina', 'Chris', 'David', 'Jerry'],
+  ['Like This', 'Like That'],
+  ['Mystery', 'Comedy', 'Action', 'Drama'],
+  ['Charmander', 'Squirtle', 'Bulbasaur'],
+  ['Rock', 'Paper', 'Scissors']
 ];
 
 var blank_message = 'Add some values in the pane.';
 var is_mobile = false;
 var last_width = 0;
+var dirty = false;
 
 function setup() {
   clipboard.style.opacity = 0;
@@ -53,14 +59,14 @@ function setup() {
   CANVAS_MID_Y = canvas.height / 2;
   WHEEL_RADIUS = CANVAS_MID_X * WHEEL_PERCENTAGE;
   lastTime = Date.now();
-  // nameList
-  var saved_list = localStorage.getItem('wheel_items');
-  if (saved_list && !nameList.length) {
-    nameList = JSON.parse(saved_list);
-  }
 
-  if (!nameList || !nameList.length) {
+  var saved_list = JSON.parse(localStorage.getItem('wheel_items'));
+
+  console.log(saved_list);
+  if (!saved_list.length) {
     nameList = name_lists[getRandomInt(0, name_lists.length)];
+  } else {
+    nameList = saved_list;
   }
 
   var hash = window.location.hash;
@@ -83,7 +89,11 @@ function setup() {
 
 function refreshList() {
   renderList();
-  localStorage.setItem('wheel_items', JSON.stringify(nameList));
+  if (!dirty) {
+    dirty = true;
+  } else {
+    localStorage.setItem('wheel_items', JSON.stringify(nameList));
+  }
 }
 
 function addItem() {
@@ -214,7 +224,6 @@ function loop() {
   var y;
   var wedgeRotation;
   var list_len = nameList.length;
-  var wheelCt = 0;
   for (var i = 0; i < list_len; i++) {
     context.beginPath();
     wedgeRotation = i * wedgeSubdiv + wheelRotation;
@@ -252,10 +261,14 @@ function loop() {
     context.textAlign = 'center';
     context.font = canvas.width / (is_mobile ? 18 : 24) + 'px Josefin Sans';
     fillColor('#FFFFFF');
-    context.fillText(
-        nameList[i],
+    context.save();
+    context.translate(
         CANVAS_MID_X + Math.cos(degRad(wedgeRotation)) * (WHEEL_RADIUS * wedge_text_position),
-        CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * (WHEEL_RADIUS * wedge_text_position));
+        CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * (WHEEL_RADIUS * wedge_text_position)
+    );
+    context.rotate(degRad(wedgeRotation + 180));
+    context.fillText(nameList[i], 0, 0);
+    context.restore();
   }
 
   fillColor('#000000');
