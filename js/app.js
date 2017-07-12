@@ -110,7 +110,7 @@ function clearList() {
 }
 
 function copyLink() {
-  clipboard.innerText = window.location.href;
+  clipboard.innerText = encodeURI(window.location.href);
   clipboard.select();
   document.execCommand('copy');
   clipboard.blur();
@@ -171,9 +171,13 @@ function renderList() {
         var contentDiv = document.createElement('span');
         contentDiv.innerText = elem;
         content.appendChild(contentDiv);
-        button.setAttribute('data-ID', i + '');
+        button.setAttribute('data-id', i + '');
         button.onclick = function (e) {
-          removeItem(e.target.getAttribute('data-id'));
+          var id = e.target.getAttribute('data-id');
+          if (!id) {
+            id = e.target.parentNode.getAttribute('data-id');
+          }
+          removeItem(id);
         };
       }
       wedge_list.appendChild(instance);
