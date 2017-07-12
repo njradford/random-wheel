@@ -62,8 +62,7 @@ function setup() {
 
   var saved_list = JSON.parse(localStorage.getItem('wheel_items'));
 
-  console.log(saved_list);
-  if (!saved_list.length) {
+  if (!saved_list || !saved_list.length) {
     nameList = name_lists[getRandomInt(0, name_lists.length)];
   } else {
     nameList = saved_list;
