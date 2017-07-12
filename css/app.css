@@ -16,6 +16,11 @@ main {
     max-width: 920px;
 }
 
+#ad-unit {
+    width: 65%;
+    margin: auto;
+}
+
 #buttons button {
     width: 50%;
     border-radius: 0;
@@ -178,9 +183,4 @@ input:focus {
     #wedge-list {
         height: 256px;
     }
-}
-
-.ad-unit {
-    width: 65%;
-    margin: auto;
 }

@@ -27,6 +27,7 @@ var clear_list = document.getElementById('clear-list');
 var copy_link = document.getElementById('copy-link');
 var templates = document.getElementById('templates');
 var clipboard = document.getElementById('clipboard');
+var ad_crawler_data = document.getElementById('ad-crawler-data');
 
 var mobile_break = 425;
 var desktop_canvas_size = 500;
@@ -48,7 +49,6 @@ function setup() {
   clipboard.style.opacity = 0;
   clipboard.style.width = 0;
   clipboard.style.height = 0;
-  document.body.appendChild(clipboard);
   CANVAS_MID_X = canvas.width / 2;
   CANVAS_MID_Y = canvas.height / 2;
   WHEEL_RADIUS = CANVAS_MID_X * WHEEL_PERCENTAGE;
@@ -76,6 +76,7 @@ function setup() {
   resizeCanvas();
   registerInputListeners();
   renderList();
+  renderAdCrawlContent();
   loop();
   refreshList();
 }
@@ -112,6 +113,7 @@ function copyLink() {
   clipboard.innerText = window.location.href;
   clipboard.select();
   document.execCommand('copy');
+  clipboard.blur();
 }
 
 function resizeCanvas() {
@@ -147,6 +149,10 @@ function registerInputListeners() {
   spin_wheel.onclick = spinWheel;
   clear_list.onclick = clearList;
   copy_link.onclick = copyLink;
+}
+
+function renderAdCrawlContent() {
+  ad_crawler_data.innerText = nameList.toString();
 }
 
 function renderList() {
@@ -213,7 +219,7 @@ function loop() {
     y = CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * WHEEL_RADIUS;
     context.moveTo(CANVAS_MID_X, CANVAS_MID_Y);
 
-    strokeColor(wedgeColorC);
+    strokeColor('#CDCDCD');
     switch (i % 3) {
       case 0:
         fillColor(wedgeColorA);

@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" >
     <title>A Random Wheel</title>
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
     <meta name="theme-color" content="#2e2e2e">
-
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/lib/element_styles.css"/>
     <link rel="stylesheet" href="css/lib/app_layout.css"/>
@@ -14,7 +13,7 @@
     <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
-    <div id="clipboard">.</div>
+    <textarea id="clipboard">.</textarea>
     <div class="letterhead">
       <div class="letterhead-content">
         <div class="al-center">A Random Wheel |
@@ -49,8 +48,9 @@
         </div>
       </div>
     </main>
-    <div class="ad-unit">
-      <span style="opacity: 0">Computer Cases, Underwear, Tools.</span>
+    <div id="ad-unit">
+      <span id="ad-crawler-data" style="opacity: 0; width: 0; height: 0"></span>
+      <script src="js/ad.js" ></script>
       <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=6d125496-1c40-460c-8298-926e9c90395f"></script>
     </div>
     <div class="footer">Made with <i class="fa fa-heart" aria-hidden="true"></i> <a href="https://github.com/aldousp" target="_blank">by Aldous</a>.</div>
@@ -71,5 +71,5 @@
       a wheel rendering of these values.
     </span>
   </body>
-  <script src="js/canvas.js"></script>
+  <script src="js/app.js" ></script>
 </html>
