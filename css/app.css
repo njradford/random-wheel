@@ -7,49 +7,13 @@ body {
     align-items: center;
 }
 
-
 main {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
-}
-
-.name-entry button {
-    border-radius: 0;
-}
-
-.remove-wedge {
-    background-color: #8e8e8e;
-}
-
-.right-pane {
-    border: 4px solid black;
-    border-radius: 8px 8px 0 0;
-    padding: 8px;
-    margin: 8px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-#wedge-list {
-    flex-grow: 0;
-    overflow-y: scroll;
-    height: 350px;
-    border-radius: 4px 4px 0 0;
-    border: thin solid #eaeaea;
-    box-shadow: inset 0 0 2px 1px rgba(151, 151, 151, 0.09);
-}
-
-#canvas {
-    padding-left: 0;
-    padding-right: 0;
-    display: block;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    border: 3px solid black;
-    border-radius: 300px;
+    max-width: 920px;
 }
 
 #buttons button {
@@ -69,6 +33,10 @@ main {
 
 #spin-wheel {
     background-color: #000000;
+    font-size: 1.45em;
+    height: 3em;
+    width: 100%;
+    font-style: italic;
 }
 
 #buttons {
@@ -76,6 +44,48 @@ main {
     padding: 0;
     margin: 0;
 }
+
+#wedge-list {
+    flex-grow: 0;
+    overflow-y: scroll;
+    height: 350px;
+    border-radius: 4px 4px 0 0;
+    border: thin solid #eaeaea;
+    box-shadow: inset 0 0 2px 1px rgba(151, 151, 151, 0.09);
+}
+
+
+.name-entry button {
+    border-radius: 0;
+}
+
+.remove-wedge {
+    background-color: #8e8e8e;
+}
+
+.right-pane {
+    border: 4px solid black;
+    border-radius: 8px 8px 0 0;
+    padding: 8px;
+    margin: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 256px;
+}
+
+
+#canvas {
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border: 3px solid black;
+    border-radius: 300px;
+    width: 512px;
+    height: 512px;
+}
+
 
 /*Label With Action*/
 .labeled-action {
@@ -152,14 +162,25 @@ input:focus {
         flex-direction: column-reverse;
         align-items: center;
         justify-content: flex-start;
+        width: 100VW !important;
+        max-width: initial !important;
     }
 
-    canvas {
-        width: 256px;
-        height: 256px;
+    #canvas {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .right-pane {
+        width: 85%;
     }
 
     #wedge-list {
-        height: 128px;
+        height: 256px;
     }
+}
+
+.ad-unit {
+    width: 65%;
+    margin: auto;
 }

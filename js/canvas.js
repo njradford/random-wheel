@@ -9,26 +9,28 @@ var MAX_ROTATION_SPEED = 450;
 var lastTime;
 var delta;
 var runTime = 0.0;
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
-var wedgeColorA = "#AAAAAA";
-var wedgeColorB = "#BBBBBB";
-var wedgeColorC = "#CCCCCC";
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var wedgeColorA = '#AAAAAA';
+var wedgeColorB = '#BBBBBB';
+var wedgeColorC = '#CCCCCC';
 var wedgeSubdiv;
 var wheelRotation = 90;
 var rotationSpeed = 0;
 
-var btn_addWedge = document.getElementById("add-wedge");
-var wedge_input = document.getElementById("wedge-input");
-var wedge_list = document.getElementById("wedge-list");
-var spin_wheel = document.getElementById("spin-wheel");
-var clear_list = document.getElementById("clear-list");
-var copy_link = document.getElementById("copy-link");
-var templates = document.getElementById("templates");
+var btn_addWedge = document.getElementById('add-wedge');
+var wedge_input = document.getElementById('wedge-input');
+var wedge_list = document.getElementById('wedge-list');
+var spin_wheel = document.getElementById('spin-wheel');
+var clear_list = document.getElementById('clear-list');
+var copy_link = document.getElementById('copy-link');
+var templates = document.getElementById('templates');
+var clipboard = document.getElementById('clipboard');
 
 var mobile_break = 425;
 var desktop_canvas_size = 500;
 var mobile_canvas_size = 500;
+var wedge_text_position = .65; // Distance Along Radius
 
 var nameList = [];
 var name_lists = [
@@ -37,10 +39,9 @@ var name_lists = [
   ['Liu Kang', 'Sub-Zero', 'Sonya', 'Baraka']
 ];
 
-var blank_message = "Add some values in the pane.";
+var blank_message = 'Add some values in the pane.';
 var is_mobile = false;
 var last_width = 0;
-var clipboard = document.createElement('textarea');
 
 function setup() {
   clipboard.style.opacity = 0;
@@ -64,7 +65,7 @@ function setup() {
   var hash = window.location.hash;
   var hashString = hash.substr(1, hash.length - 1);
   if (hashString.length) {
-    var queryList = JSON.parse(hashString);
+    var queryList = JSON.parse(decodeURI(hashString));
     if (queryList.length) {
       nameList = queryList;
     }
@@ -110,7 +111,6 @@ function copyLink() {
   clipboard.innerText = window.location.href;
   clipboard.select();
   document.execCommand('copy');
-  console.log('Running!');
 }
 
 function resizeCanvas() {
@@ -234,13 +234,16 @@ function loop() {
   for (i = 0; i < nameList.length; i++) {
     context.beginPath();
     wedgeRotation = (i * wedgeSubdiv + wheelRotation) + wedgeSubdiv / 2;
-    context.textAlign = "center";
-    context.font = canvas.width / 24 + "px Josefin Sans";
-    fillColor("#FFFFFF");
-    context.fillText(nameList[i], CANVAS_MID_X + Math.cos(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75), CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * (WHEEL_RADIUS * .75));
+    context.textAlign = 'center';
+    context.font = canvas.width / (is_mobile ? 18 : 24) + 'px Josefin Sans';
+    fillColor('#FFFFFF');
+    context.fillText(
+        nameList[i],
+        CANVAS_MID_X + Math.cos(degRad(wedgeRotation)) * (WHEEL_RADIUS * wedge_text_position),
+        CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * (WHEEL_RADIUS * wedge_text_position));
   }
 
-  fillColor("#000000");
+  fillColor('#000000');
   context.beginPath();
   context.moveTo(CANVAS_MID_X + canvas.width / 32, canvas.height / 64);
   context.lineTo(CANVAS_MID_X - canvas.width / 32, canvas.height / 64);
@@ -249,9 +252,9 @@ function loop() {
 
   if (!nameList.length) {
     context.beginPath();
-    context.textAlign = "center";
-    context.font = canvas.width / 24  + "px Josefin Sans";
-    fillColor("#000000");
+    context.textAlign = 'center';
+    context.font = canvas.width / (is_mobile ? 18 : 24) + 'px Josefin Sans';
+    fillColor('#000000');
     context.fillText(blank_message, CANVAS_MID_X, CANVAS_MID_Y);
   } else {
     context.beginPath();
