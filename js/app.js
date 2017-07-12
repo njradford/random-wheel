@@ -84,7 +84,6 @@ function setup() {
 function refreshList() {
   renderList();
   localStorage.setItem('wheel_items', JSON.stringify(nameList));
-  window.location.hash = JSON.stringify(nameList);
 }
 
 function addItem() {
@@ -110,7 +109,7 @@ function clearList() {
 }
 
 function copyLink() {
-  clipboard.innerText = encodeURI(window.location.href);
+  clipboard.innerText = encodeURI( window.location.href + '#' + JSON.stringify(nameList) );
   clipboard.select();
   document.execCommand('copy');
   clipboard.blur();
