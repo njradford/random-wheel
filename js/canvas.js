@@ -13,7 +13,8 @@ var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 var wedgeColorA = '#AAAAAA';
 var wedgeColorB = '#BBBBBB';
-var wedgeColorC = '#CCCCCC';
+var wedgeColorC = '#DDDDDD';
+var wedgeColorD = '#CCCCCC';
 var wedgeSubdiv;
 var wheelRotation = 90;
 var rotationSpeed = 0;
@@ -204,6 +205,7 @@ function loop() {
   var y;
   var wedgeRotation;
   var list_len = nameList.length;
+  var wheelCt = 0;
   for (var i = 0; i < list_len; i++) {
     context.beginPath();
     wedgeRotation = i * wedgeSubdiv + wheelRotation;
@@ -211,24 +213,28 @@ function loop() {
     y = CANVAS_MID_Y + Math.sin(degRad(wedgeRotation)) * WHEEL_RADIUS;
     context.moveTo(CANVAS_MID_X, CANVAS_MID_Y);
 
-    var value = i % 3;
-    if (list_len % 2) {
-      switch (value) {
-        case 0:
-          fillColor(wedgeColorA);
-          break;
-        case 1:
-          fillColor(wedgeColorB);
-          break;
-        case 2:
-          fillColor(wedgeColorC);
-          break;
-      }
-    } else {
-      fillColor( i % 2 ? wedgeColorA : wedgeColorB);
+    strokeColor(wedgeColorC);
+    switch (i % 3) {
+      case 0:
+        fillColor(wedgeColorA);
+        break;
+      case 1:
+        fillColor(wedgeColorB);
+        break;
+      case 2:
+        fillColor(wedgeColorC);
+        break;
     }
+
+    if (i === list_len - 1) {
+      fillColor(wedgeColorD);
+    }
+
     context.arc(CANVAS_MID_X, CANVAS_MID_Y, WHEEL_RADIUS, degRad(wedgeRotation), degRad(wedgeRotation + wedgeSubdiv));
     context.fill();
+    if (i !== 0) {
+      context.stroke();
+    }
   }
 
   for (i = 0; i < nameList.length; i++) {
