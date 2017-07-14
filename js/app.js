@@ -27,7 +27,7 @@ var clear_list = document.getElementById('clear-list');
 var copy_link = document.getElementById('copy-link');
 var templates = document.getElementById('templates');
 var clipboard = document.getElementById('clipboard');
-var ad_crawler_data = document.getElementById('ad-crawler-data');
+
 
 var mobile_break = 425;
 var desktop_canvas_size = 500;
@@ -71,7 +71,7 @@ function setup() {
   var hash = window.location.hash;
   var hashString = hash.substr(1, hash.length - 1);
   if (hashString.length) {
-    var queryList = JSON.parse(decodeURI(hashString));
+    var queryList = JSON.parse(decodeURIComponent(hashString));
     if (queryList.length) {
       nameList = queryList;
     }
@@ -81,7 +81,6 @@ function setup() {
   resizeCanvas();
   registerInputListeners();
   renderList();
-  renderAdCrawlContent();
   loop();
   refreshList();
 }
@@ -157,10 +156,6 @@ function registerInputListeners() {
   spin_wheel.onclick = spinWheel;
   clear_list.onclick = clearList;
   copy_link.onclick = copyLink;
-}
-
-function renderAdCrawlContent() {
-  ad_crawler_data.innerText = nameList.toString();
 }
 
 function renderList() {
