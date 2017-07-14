@@ -1,74 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" >
-    <title>A Random Wheel</title>
-    <meta name="theme-color" content="#2e2e2e">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
-    <link rel="stylesheet" href="css/app.css"/>
-    <link rel="stylesheet" href="css/lib/element_styles.css"/>
-    <link rel="stylesheet" href="css/lib/app_layout.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <textarea id="clipboard">.</textarea>
-    <div class="letterhead">
-      <div class="letterhead-content">
-        <div class="al-center">A Random Wheel |
-          <span style="font-size: .45em">"That's it? It's just a wheel?"</span>
-        </div>
-        <div >
-          <a href="https://github.com/AldousP/a-random-wheel" target="_blank">
-            <i style="color: white" class="fa fa-github fa-2x" aria-hidden="true"></i>
-          </a>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" >
+  <title>A Random Wheel</title>
+  <meta name="theme-color" content="#2e2e2e">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="css/lib/element_styles.css"/>
+  <link rel="stylesheet" href="css/lib/app_layout.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+  <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<textarea id="clipboard">.</textarea>
+<div class="letterhead">
+  <div class="letterhead-content">
+    <div class="al-center">A Random Wheel |
+      <span style="font-size: .45em">"That's it? It's just a wheel?"</span>
+    </div>
+    <div >
+      <a href="https://github.com/AldousP/a-random-wheel" target="_blank">
+        <i style="color: white" class="fa fa-github fa-2x" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<main>
+  <canvas id="canvas"></canvas>
+  <div class="right-pane">
+    <div class="controls">
+      <div class="labeled-action name-entry">
+        <input id="wedge-input" class="content" placeholder="Enter Values Here"/>
+        <button id="add-wedge">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
-    <main>
-      <canvas id="canvas"></canvas>
-      <div class="right-pane">
-        <div class="controls">
-          <div class="labeled-action name-entry">
-            <input id="wedge-input" class="content" placeholder="Enter Values Here"/>
-            <button id="add-wedge">
-              <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-        <div id="wedge-list">
-        </div>
-        <div id="buttons">
-          <button id="clear-list" class="button stock remove-wedge">Clear</button>
-          <button id="copy-link" class="button stock remove-wedge">Copy LInk</button>
-        </div>
-        <div id="spin-container">
-          <button id="spin-wheel" class="button stock">Spin</button>
-        </div>
-      </div>
-    </main>
-    <div id="ad-unit">
-      <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=6d125496-1c40-460c-8298-926e9c90395f"></script>
-      <span id="ad-crawler-data" style="opacity: 0; width: 0; height: 0"></span>
+    <div id="wedge-list">
     </div>
-    <div class="footer">Made with <i class="fa fa-heart" aria-hidden="true"></i> <a href="https://github.com/aldousp" target="_blank">by Aldous</a>.</div>
-    <!--Templates-->
-    <div id="templates" style="display: none">
-      <!--List Item Template-->
-      <ListItem>
-        <div class="list-item labeled-action">
-          <div class="content">Sample Content</div>
-          <button class="remove-wedge">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-        </div>
-      </ListItem>
+    <div id="buttons">
+      <button id="clear-list" class="button stock remove-wedge">Clear</button>
+      <button id="copy-link" class="button stock remove-wedge">Copy LInk</button>
     </div>
-    <span style="opacity:0;">
-      This is a site that contains a wheel for picking things at random. Users can input values in the pane and spin
-      a wheel rendering of these values.
-    </span>
-  </body>
-  <script src="js/app.js" ></script>
+    <div id="spin-container">
+      <button id="spin-wheel" class="button stock">Spin</button>
+    </div>
+  </div>
+</main>
+<div id="ad-unit">
+  <span style="opacity: 0; width: 0; height: 0">Movies, Posters, Snacks</span>
+  <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=6d125496-1c40-460c-8298-926e9c90395f"></script>
+  <span style="opacity: 0; width: 0; height: 0">Books, Video Games, Stationary</span>
+</div>
+<!--Templates-->
+<div id="templates" style="display: none">
+  <!--List Item Template-->
+  <ListItem>
+    <div class="list-item labeled-action">
+      <div class="content">Sample Content</div>
+      <button class="remove-wedge">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+    </div>
+  </ListItem>
+</div>
+</body>
+<script src="js/app.js" ></script>
 </html>
