@@ -14,10 +14,6 @@ Because all of the other ones look like fucking carnivals.
 ### How Can I Build It?
 
 ```
-npm install
-```
-or
-```
 yarn install
 ```
 Serve with 
