@@ -1,4 +1,4 @@
-## A Simple Random Wheel
+## Random Wheel
 
 <img src='http://i.imgur.com/KAlfIrZ.png' width=450/>
 
